@@ -20,25 +20,25 @@ MongoDB.once('open', function () {
   console.log('mongodb connection open!');
 });
 
-app.get('/testUser', function(req, res) {
+app.get ('/testAssignment', function (req, res){
 
-  var justin = new User({
-    name: 'Justin',
-    username: 'testJustin',
-    admin: true
-  });
+	var assignment = new Assignment({
+		number: 1,
+		name: George,
+		score: 80,
+		completed: ''
+	});
 
-  justin.save(function(err) {
-    if(err){
-      //failed
-      console.log('error occurred:', err);
-      res.sendStatus(500);
-    }else{
-      console.log('Justin saved successfully!');
-      res.sendStatus(201);
-    }
-  });
-});
+	assignment.save(function(err){
+		if(err){
+			console.log('error occured:', err);
+			res.sendStatus(500);
+		}else{
+			console.log('assignment saved successfully!');
+			res.sendStatus(201);
+		}
+	});//end save function
+});//end test get
 
 var server = app.listen('3030', function(){
 	var port = server.address().port;
