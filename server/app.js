@@ -11,19 +11,19 @@ app.use(bodyParser.json());
 // //model
 //var Assignment = require('../models/assignment');
 
-var mongoURI = "mongodb://localhost:27017/assignments";
-var MongoDB = mongoose.connect(mongoURI).connection;
+var mongoURI = "mongodb://localhost:27017/assignments";//location of database like connectionString in postgress
+var MongoDB = mongoose.connect(mongoURI).connection;//mongoose connection to mongo
 
 //routers
-var assignmentRouter = require('../routes/route');
+var assignmentRouter = require('../routes/route');//use this module
 
-app.use('/assignment', assignmentRouter);
+app.use('/assignment', assignmentRouter);//for this route, go into assignmentRouter file
 
-MongoDB.on('error', function (err) {
+MongoDB.on('error', function (err) {//if there is an error connecting to the database, let me know
     console.log('mongodb connection error:', err);
 });
 
-MongoDB.once('open', function () {
+MongoDB.once('open', function () {//open connection to mongo
   console.log('mongodb connection open!');
 });
 
@@ -33,7 +33,7 @@ app.get('/', function (req, res) {
 
 });
 
-app.use( express.static ( 'public'));
+app.use( express.static ( 'public'));//this is where public is
 
 
 var server = app.listen('3030', function(){

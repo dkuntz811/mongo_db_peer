@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose');//gives access to mongoose file
 var Schema = mongoose.Schema;
 
 console.log('in assignment.js model');
@@ -10,6 +10,6 @@ var assignmentSchema = new Schema({
 	completed: {type: Date, default: Date.now}
 });
 
-var Assignment = mongoose.model('assignments', assignmentSchema);
+var Assignment = mongoose.model('assignments', assignmentSchema);//
 
 module.exports = Assignment;
